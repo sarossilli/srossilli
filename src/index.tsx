@@ -2,29 +2,26 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home';
+import About from './pages/About';
 import Navbar from './components/Navbar';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/about",
-    element: <Home />,
-  },
-]);
+const router = createBrowserRouter(
+  createRoutesFromElements(
+    <Route path="/" element={<Navbar />}>
+      <Route index element={<Home />} />
+      <Route path="about" element={<About />} />
+    </Route>
+  )
+);
 
 root.render(
   <React.StrictMode>
-    <Navbar />
-
     <RouterProvider router={router} />
   </React.StrictMode>
 );
