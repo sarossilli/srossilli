@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom';
 import Home from './pages/Home';
 import About from './pages/About';
-import Navbar from './components/Navbar';
+import Navbar from './components/Navbar/Navbar';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
