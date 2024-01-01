@@ -2,6 +2,7 @@ import React from 'react';
 import { NavLink, Outlet } from 'react-router-dom';
 import logoPng from '../../logo.png';
 import logo from '../../logo.webp';
+import { cdn } from '../../util/AssetConsts';
 
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav';
@@ -28,7 +29,7 @@ function Navbar() {
                     <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <picture  className="h-8 w-8">
                             <source srcSet={logo}/>
-                            <img src={logoPng} className="h-8 w-8" alt="S Logo" />
+                            <img src={`${cdn}/logoPng`} className="h-8 w-8" alt="S Logo" />
                         </picture>
                         <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sarossil.li</span>
                     </a>
