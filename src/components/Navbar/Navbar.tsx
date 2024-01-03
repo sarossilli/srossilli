@@ -24,7 +24,7 @@ function Navbar() {
 
     return (
         <>
-            <nav className="bg-white border-gray-200 dark:bg-gray-900">
+            <nav className="backdrop-blur-lg border-solid border-b border-sky-50">
                 <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
                     <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
                         <picture  className="h-8 w-8">

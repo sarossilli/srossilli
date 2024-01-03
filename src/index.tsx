@@ -22,7 +22,9 @@ const router = createBrowserRouter(
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <div className='h-screen overflow-auto dark:bg-gray-900 bg-gray-200 dark:text-slate-200 bg-white dark:bg-slate-900'>
+      <RouterProvider router={router} />
+    </div >
   </React.StrictMode>
 );
 
