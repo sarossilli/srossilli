@@ -2,15 +2,23 @@ import React from 'react';
 
 function Post() {
     return (
-        <>
-            <div className={`flex items-stretch rounded-lg justify-center justify-self-auto h-auto w-auto p-4 m-2 border-4`}>
-                <img className='justify-self-auto' src="" />
-                <div>
-                    <h3 className='justify-self-auto'>Test</h3>
-                    <h3 className='justify-self-auto'>A Description</h3>
-                </div>
+        <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+            <a href="#">
+                <img className="rounded-t-lg" src="https://raw.githubusercontent.com/Sarossilli/Musical-Joycons/master/readme/header.gif" alt="" />
+            </a>
+            <div className="p-5">
+                <a href="#">
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">The best post title ever!</h5>
+                </a>
+                <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">A short little description that is about the post.</p>
+                <a href="#" className="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    Read more
+                    <svg className="w-3.5 h-3.5 ms-2 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9" />
+                    </svg>
+                </a>
             </div>
-        </>
+        </div>
     )
 }
 
