@@ -6,6 +6,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import Home from './pages/Home';
 import About from './pages/About';
 import Navbar from './components/Navbar/Navbar';
+import PostDetails from './pages/PostDetails';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -16,6 +17,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<Navbar />}>
       <Route index element={<Home />} />
       <Route path="about" element={<About />} />
+      <Route path="posts/:id" element={<PostDetails/>} />
+
     </Route>
   )
 );
