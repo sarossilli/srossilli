@@ -12,7 +12,7 @@ import { generateClient } from 'aws-amplify/api';
 import config from './amplifyconfiguration.json';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-Amplify.configure(config);
+//Amplify.configure(config);
 
 const queryClient = new QueryClient()
 
