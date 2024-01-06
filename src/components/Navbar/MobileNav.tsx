@@ -2,7 +2,7 @@ import React from 'react';
 import { NavLink} from 'react-router-dom';
 import { activeState } from './util';
 
-function MobileNav({navbarOpen}: {navbarOpen: boolean}) {
+function MobileNav({ navbarOpen}: {navbarOpen: boolean}) {
     return (
         <>
             <div className={`absolute justify-end w-full px-1 visible md:invisible ${(navbarOpen ? " flex" : " hidden")}`} id="navbar-default">
