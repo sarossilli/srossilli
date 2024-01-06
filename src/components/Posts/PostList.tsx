@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from 'react';
 import { generateClient } from 'aws-amplify/api';
 import { useQuery } from '@tanstack/react-query';
 import { listPosts } from '../../graphql/queries';
@@ -8,10 +7,7 @@ function PostList() {
     const client = generateClient()
 
     const {
-        data,
-        isLoading,
-        isSuccess,
-        isError: isErrorQuery,
+        data
     } = useQuery({
         queryKey: ["posts"],
         queryFn: async () => {
@@ -26,15 +22,14 @@ function PostList() {
 
             return allPosts;
         },
+        staleTime: 5,
     });
 
 
     return (
 
         <>
-            {!isSuccess && <p>Error fetching data</p>}
-            {isLoading && <p>Fetching data...</p>}
-            <div className={`m-5 grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-6`}>
+            <div className={`m-5 grid gap-4 grid-cols-1 md:grid-cols-3 lg:grid-cols-3`}>
                 {data?.map((post) => (
                     <p key={post.id}><PostInfo post={post}></PostInfo></p>
                 ))}
