@@ -17,6 +17,7 @@ export const createPost = /* GraphQL */ `mutation CreatePost(
     title
     shortDescription
     banner
+    content
     createdAt
     updatedAt
     _version
@@ -38,6 +39,7 @@ export const updatePost = /* GraphQL */ `mutation UpdatePost(
     title
     shortDescription
     banner
+    content
     createdAt
     updatedAt
     _version
@@ -59,6 +61,7 @@ export const deletePost = /* GraphQL */ `mutation DeletePost(
     title
     shortDescription
     banner
+    content
     createdAt
     updatedAt
     _version

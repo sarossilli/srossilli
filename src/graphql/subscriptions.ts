@@ -14,6 +14,7 @@ export const onCreatePost = /* GraphQL */ `subscription OnCreatePost($filter: Mo
     title
     shortDescription
     banner
+    content
     createdAt
     updatedAt
     _version
@@ -32,6 +33,7 @@ export const onUpdatePost = /* GraphQL */ `subscription OnUpdatePost($filter: Mo
     title
     shortDescription
     banner
+    content
     createdAt
     updatedAt
     _version
@@ -50,6 +52,7 @@ export const onDeletePost = /* GraphQL */ `subscription OnDeletePost($filter: Mo
     title
     shortDescription
     banner
+    content
     createdAt
     updatedAt
     _version

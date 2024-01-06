@@ -14,6 +14,13 @@ export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
     title
     shortDescription
     banner
+    content
+    createdAt
+    updatedAt
+    _version
+    _deleted
+    _lastChangedAt
+    __typename
   }
 }
 ` as GeneratedQuery<APITypes.GetPostQueryVariables, APITypes.GetPostQuery>;
@@ -28,8 +35,16 @@ export const listPosts = /* GraphQL */ `query ListPosts(
       title
       shortDescription
       banner
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
     }
     nextToken
+    startedAt
     __typename
   }
 }
@@ -51,8 +66,16 @@ export const syncPosts = /* GraphQL */ `query SyncPosts(
       title
       shortDescription
       banner
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
     }
     nextToken
+    startedAt
     __typename
   }
 }
