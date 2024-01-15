@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { generateClient } from 'aws-amplify/api';
 import { useQuery } from '@tanstack/react-query';
 import { listPosts } from '../../graphql/queries';

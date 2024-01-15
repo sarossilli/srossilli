@@ -1,22 +1,9 @@
 import React from 'react';
-import { NavLink, Outlet } from 'react-router-dom';
-import logoPng from '../../logo.png';
-import logo from '../../logo.webp';
+import { Outlet } from 'react-router-dom';
 import { cdn } from '../../util/AssetConsts';
 
 import DesktopNav from './DesktopNav';
 import MobileNav from './MobileNav';
-
-
-const activeClassName = "block py-2 px-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white md:dark:text-blue-500"
-const inactiveClassName = "block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-
-
-const activeState = ({ isActive }: {
-    isActive: any;
-}) => {
-    return (isActive ? activeClassName : inactiveClassName);
-};
 
 function Navbar() {
 
