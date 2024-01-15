@@ -15,14 +15,14 @@
       "api": {
         "srossilli": {}
       },
-      "auth": {
-        "srossilli": {}
-      },
       "storage": {
         "srossillic8d64944": {
           "bucketName": "sarossilli-cdn-img",
           "region": "us-east-1"
         }
+      },
+      "auth": {
+        "srossilli": {}
       }
     }
   }
