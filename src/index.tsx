@@ -36,8 +36,8 @@ root.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
       <div className='h-screen overflow-auto dark:bg-gray-900 bg-gray-200 dark:text-slate-200 bg-white dark:bg-slate-900'>
-        <GlobalLoadingIndicator />
         <RouterProvider router={router} />
+        <GlobalLoadingIndicator />
       </div >
     </QueryClientProvider>
   </React.StrictMode>

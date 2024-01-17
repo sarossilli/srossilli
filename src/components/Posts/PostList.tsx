@@ -4,7 +4,10 @@ import { useQuery } from '@tanstack/react-query';
 import { listPosts } from '../../graphql/queries';
 import PostInfo from './Post/PostInfo';
 
-function PostList() {
+interface PostListProps {
+}
+
+function PostList(props?: PostListProps) {
     const client = generateClient()
 
     const {
