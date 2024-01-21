@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { generateClient } from 'aws-amplify/api'
 import { useQuery } from '@tanstack/react-query';
 import { getPost } from '../graphql/queries';
+import Markdown from 'react-markdown'
 
 function PostDetails() {
     const { id } = useParams();
@@ -28,9 +29,7 @@ function PostDetails() {
     return isErrorQuery ? <h1>ERROR</h1> : (
         <div className="PostDetails">
             <h1>{data?.title}</h1>
-            <p>
-                {data?.content}
-            </p>
+            <Markdown className={`markdown`} children={data?.content}/>
         </div>
     )
 
