@@ -19,3 +19,7 @@ code {
 .markdown > * {
   all: revert;
 }
+
+.markdownTest > * {
+  all: revert;
+}
