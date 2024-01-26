@@ -16,10 +16,6 @@ code {
     monospace;
 }
 
-.markdown > * {
-  all: revert;
-}
-
-.markdownTest > * {
-  all: revert;
+.line-break {
+  white-space: pre-wrap;
 }
