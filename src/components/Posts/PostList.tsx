@@ -37,7 +37,7 @@ function PostList(props?: PostListProps) {
         <>
             {!isSuccess && <p>Error fetching data</p>}
             {isLoading && <p>Fetching data...</p>}
-            <div className={`m-5 grid gap-4 grid-cols-2 md:grid-cols-4 lg:grid-cols-6`}>
+            <div className={`m-5 grid gap-4 grid-cols-1 md:grid-cols-4 lg:grid-cols-6`}>
                 {data?.map((post) => (
                     <p key={post.id}><PostInfo post={post}></PostInfo></p>
                 ))}

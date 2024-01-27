@@ -4,6 +4,8 @@ import { generateClient } from 'aws-amplify/api'
 import { useQuery } from '@tanstack/react-query';
 import { getPost } from '../graphql/queries';
 import MarkdownRenderer from "../components/MarkdownView/MarkdownRenderer"
+import PostCreateForm from '../ui-components/PostCreateForm';
+import PostUpdateForm from '../ui-components/PostUpdateForm';
 
 function PostDetails() {
     const { id } = useParams();
@@ -27,9 +29,11 @@ function PostDetails() {
     });
 
     return isErrorQuery ? <h1>ERROR</h1> : (
-        <div className="PostDetails">
-            <h1 className='flex text-sm uppercase text-g1'>{data?.title}</h1>
-            <MarkdownRenderer text={data?.content || ""} />
+        <div className="w-full flex flex-col justify-center">
+            <h1 className='uppercase text-2xl'>{data?.title}</h1>
+            <div className='grow'>
+                <MarkdownRenderer text={data?.content || ""} />
+            </div>
         </div>
     )
 
