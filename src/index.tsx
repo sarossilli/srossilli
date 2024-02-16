@@ -10,7 +10,6 @@ import PostDetails from './pages/PostDetails';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Amplify } from 'aws-amplify';
 import config from './aws-exports'
-import GlobalLoadingIndicator from './components/GlobalLoadingIndicator/GlobalLoadingIndicator';
 
 Amplify.configure(config)
 
@@ -37,7 +36,6 @@ root.render(
     <QueryClientProvider client={queryClient}>
       <div className='h-screen overflow-auto dark:bg-gray-900 bg-gray-200 dark:text-slate-200 bg-white dark:bg-slate-900'>
         <RouterProvider router={router} />
-        
       </div >
     </QueryClientProvider>
   </React.StrictMode>
