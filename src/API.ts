@@ -17,7 +17,6 @@ export type ModelPostConditionInput = {
   shortDescription?: ModelStringInput | null,
   banner?: ModelStringInput | null,
   content?: ModelStringInput | null,
-  createdAt?: ModelStringInput | null,
   and?: Array< ModelPostConditionInput | null > | null,
   or?: Array< ModelPostConditionInput | null > | null,
   not?: ModelPostConditionInput | null,
@@ -91,13 +90,24 @@ export type UpdatePostInput = {
   shortDescription?: string | null,
   banner?: string | null,
   content?: string | null,
-  createdAt?: string | null,
+  createdAt: string,
   _version?: number | null,
 };
 
 export type DeletePostInput = {
   id: string,
+  createdAt: string,
   _version?: number | null,
+};
+
+export type ModelStringKeyConditionInput = {
+  eq?: string | null,
+  le?: string | null,
+  lt?: string | null,
+  ge?: string | null,
+  gt?: string | null,
+  between?: Array< string | null > | null,
+  beginsWith?: string | null,
 };
 
 export type ModelPostFilterInput = {
@@ -129,28 +139,18 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
+export enum ModelSortDirection {
+  ASC = "ASC",
+  DESC = "DESC",
+}
+
+
 export type ModelPostConnection = {
   __typename: "ModelPostConnection",
   items:  Array<Post | null >,
   nextToken?: string | null,
   startedAt?: number | null,
 };
-
-export type ModelStringKeyConditionInput = {
-  eq?: string | null,
-  le?: string | null,
-  lt?: string | null,
-  ge?: string | null,
-  gt?: string | null,
-  between?: Array< string | null > | null,
-  beginsWith?: string | null,
-};
-
-export enum ModelSortDirection {
-  ASC = "ASC",
-  DESC = "DESC",
-}
-
 
 export type ModelSubscriptionPostFilterInput = {
   id?: ModelSubscriptionIDInput | null,
@@ -259,6 +259,7 @@ export type DeletePostMutation = {
 
 export type GetPostQueryVariables = {
   id: string,
+  createdAt: string,
 };
 
 export type GetPostQuery = {
@@ -278,9 +279,12 @@ export type GetPostQuery = {
 };
 
 export type ListPostsQueryVariables = {
+  id?: string | null,
+  createdAt?: ModelStringKeyConditionInput | null,
   filter?: ModelPostFilterInput | null,
   limit?: number | null,
   nextToken?: string | null,
+  sortDirection?: ModelSortDirection | null,
 };
 
 export type ListPostsQuery = {
@@ -313,36 +317,6 @@ export type SyncPostsQueryVariables = {
 
 export type SyncPostsQuery = {
   syncPosts?:  {
-    __typename: "ModelPostConnection",
-    items:  Array< {
-      __typename: "Post",
-      id: string,
-      title: string,
-      shortDescription: string,
-      banner: string,
-      content?: string | null,
-      createdAt: string,
-      updatedAt: string,
-      _version: number,
-      _deleted?: boolean | null,
-      _lastChangedAt: number,
-    } | null >,
-    nextToken?: string | null,
-    startedAt?: number | null,
-  } | null,
-};
-
-export type PostsByDateQueryVariables = {
-  id: string,
-  createdAt?: ModelStringKeyConditionInput | null,
-  sortDirection?: ModelSortDirection | null,
-  filter?: ModelPostFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-};
-
-export type PostsByDateQuery = {
-  postsByDate?:  {
     __typename: "ModelPostConnection",
     items:  Array< {
       __typename: "Post",

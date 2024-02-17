@@ -8,8 +8,8 @@ type GeneratedQuery<InputType, OutputType> = string & {
   __generatedQueryOutput: OutputType;
 };
 
-export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
-  getPost(id: $id) {
+export const getPost = /* GraphQL */ `query GetPost($id: ID!, $createdAt: String!) {
+  getPost(id: $id, createdAt: $createdAt) {
     id
     title
     shortDescription
@@ -25,11 +25,21 @@ export const getPost = /* GraphQL */ `query GetPost($id: ID!) {
 }
 ` as GeneratedQuery<APITypes.GetPostQueryVariables, APITypes.GetPostQuery>;
 export const listPosts = /* GraphQL */ `query ListPosts(
+  $id: ID
+  $createdAt: ModelStringKeyConditionInput
   $filter: ModelPostFilterInput
   $limit: Int
   $nextToken: String
+  $sortDirection: ModelSortDirection
 ) {
-  listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+  listPosts(
+    id: $id
+    createdAt: $createdAt
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+    sortDirection: $sortDirection
+  ) {
     items {
       id
       title
@@ -80,41 +90,3 @@ export const syncPosts = /* GraphQL */ `query SyncPosts(
   }
 }
 ` as GeneratedQuery<APITypes.SyncPostsQueryVariables, APITypes.SyncPostsQuery>;
-export const postsByDate = /* GraphQL */ `query PostsByDate(
-  $id: ID!
-  $createdAt: ModelStringKeyConditionInput
-  $sortDirection: ModelSortDirection
-  $filter: ModelPostFilterInput
-  $limit: Int
-  $nextToken: String
-) {
-  postsByDate(
-    id: $id
-    createdAt: $createdAt
-    sortDirection: $sortDirection
-    filter: $filter
-    limit: $limit
-    nextToken: $nextToken
-  ) {
-    items {
-      id
-      title
-      shortDescription
-      banner
-      content
-      createdAt
-      updatedAt
-      _version
-      _deleted
-      _lastChangedAt
-      __typename
-    }
-    nextToken
-    startedAt
-    __typename
-  }
-}
-` as GeneratedQuery<
-  APITypes.PostsByDateQueryVariables,
-  APITypes.PostsByDateQuery
->;
