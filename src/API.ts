@@ -333,7 +333,7 @@ export type SyncPostsQuery = {
 };
 
 export type PostsByDateQueryVariables = {
-  content: string,
+  id: string,
   createdAt?: ModelStringKeyConditionInput | null,
   sortDirection?: ModelSortDirection | null,
   filter?: ModelPostFilterInput | null,

@@ -81,7 +81,7 @@ export const syncPosts = /* GraphQL */ `query SyncPosts(
 }
 ` as GeneratedQuery<APITypes.SyncPostsQueryVariables, APITypes.SyncPostsQuery>;
 export const postsByDate = /* GraphQL */ `query PostsByDate(
-  $content: String!
+  $id: ID!
   $createdAt: ModelStringKeyConditionInput
   $sortDirection: ModelSortDirection
   $filter: ModelPostFilterInput
@@ -89,7 +89,7 @@ export const postsByDate = /* GraphQL */ `query PostsByDate(
   $nextToken: String
 ) {
   postsByDate(
-    content: $content
+    id: $id
     createdAt: $createdAt
     sortDirection: $sortDirection
     filter: $filter
