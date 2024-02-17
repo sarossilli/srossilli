@@ -80,3 +80,41 @@ export const syncPosts = /* GraphQL */ `query SyncPosts(
   }
 }
 ` as GeneratedQuery<APITypes.SyncPostsQueryVariables, APITypes.SyncPostsQuery>;
+export const postsByDate = /* GraphQL */ `query PostsByDate(
+  $content: String!
+  $createdAt: ModelStringKeyConditionInput
+  $sortDirection: ModelSortDirection
+  $filter: ModelPostFilterInput
+  $limit: Int
+  $nextToken: String
+) {
+  postsByDate(
+    content: $content
+    createdAt: $createdAt
+    sortDirection: $sortDirection
+    filter: $filter
+    limit: $limit
+    nextToken: $nextToken
+  ) {
+    items {
+      id
+      title
+      shortDescription
+      banner
+      content
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+      __typename
+    }
+    nextToken
+    startedAt
+    __typename
+  }
+}
+` as GeneratedQuery<
+  APITypes.PostsByDateQueryVariables,
+  APITypes.PostsByDateQuery
+>;
