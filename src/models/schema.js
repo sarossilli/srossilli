@@ -41,10 +41,9 @@ export const schema = {
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
-                    "type": "AWSDateTime",
-                    "isRequired": false,
-                    "attributes": [],
-                    "isReadOnly": true
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
                 },
                 "updatedAt": {
                     "name": "updatedAt",
@@ -61,6 +60,16 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byDate",
+                        "queryField": "createdAt",
+                        "fields": [
+                            "id"
+                        ]
+                    }
                 },
                 {
                     "type": "auth",
@@ -84,5 +93,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "b4b2d81f3ae246f75d3cca2547f8031b"
+    "version": "a62467d771f357f434b9d877ffe60b7f"
 };

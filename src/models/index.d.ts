@@ -9,28 +9,28 @@ import { LazyLoading, LazyLoadingDisabled } from "@aws-amplify/datastore";
 type EagerPost = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Post, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
+    readOnlyFields: 'updatedAt';
   };
   readonly id: string;
   readonly title: string;
   readonly shortDescription: string;
   readonly banner: string;
   readonly content?: string | null;
-  readonly createdAt?: string | null;
+  readonly createdAt: string;
   readonly updatedAt?: string | null;
 }
 
 type LazyPost = {
   readonly [__modelMeta__]: {
     identifier: ManagedIdentifier<Post, 'id'>;
-    readOnlyFields: 'createdAt' | 'updatedAt';
+    readOnlyFields: 'updatedAt';
   };
   readonly id: string;
   readonly title: string;
   readonly shortDescription: string;
   readonly banner: string;
   readonly content?: string | null;
-  readonly createdAt?: string | null;
+  readonly createdAt: string;
   readonly updatedAt?: string | null;
 }
 

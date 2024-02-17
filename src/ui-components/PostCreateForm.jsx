@@ -6,7 +6,7 @@
 
 /* eslint-disable */
 import * as React from "react";
-import { Button, Flex, Grid, TextField } from "@aws-amplify/ui-react";
+import { Button, Flex, Grid, TextField, useTheme } from "@aws-amplify/ui-react";
 import { Post } from "../models";
 import { fetchByPath, getOverrideProps, validateField } from "./utils";
 import { DataStore } from "aws-amplify/datastore";
@@ -21,11 +21,13 @@ export default function PostCreateForm(props) {
     overrides,
     ...rest
   } = props;
+  const { tokens } = useTheme();
   const initialValues = {
     title: "",
     shortDescription: "",
     banner: "",
     content: "",
+    createdAt: "",
   };
   const [title, setTitle] = React.useState(initialValues.title);
   const [shortDescription, setShortDescription] = React.useState(
@@ -33,12 +35,14 @@ export default function PostCreateForm(props) {
   );
   const [banner, setBanner] = React.useState(initialValues.banner);
   const [content, setContent] = React.useState(initialValues.content);
+  const [createdAt, setCreatedAt] = React.useState(initialValues.createdAt);
   const [errors, setErrors] = React.useState({});
   const resetStateValues = () => {
     setTitle(initialValues.title);
     setShortDescription(initialValues.shortDescription);
     setBanner(initialValues.banner);
     setContent(initialValues.content);
+    setCreatedAt(initialValues.createdAt);
     setErrors({});
   };
   const validations = {
@@ -46,6 +50,7 @@ export default function PostCreateForm(props) {
     shortDescription: [{ type: "Required" }],
     banner: [{ type: "Required" }, { type: "URL" }],
     content: [],
+    createdAt: [{ type: "Required" }],
   };
   const runValidationTasks = async (
     fieldName,
@@ -68,7 +73,7 @@ export default function PostCreateForm(props) {
     <Grid
       as="form"
       rowGap="15px"
-      columnGap="15px"
+      columnGap={tokens.space.xl.value}
       padding="20px"
       onSubmit={async (event) => {
         event.preventDefault();
@@ -77,6 +82,7 @@ export default function PostCreateForm(props) {
           shortDescription,
           banner,
           content,
+          createdAt,
         };
         const validationResponses = await Promise.all(
           Object.keys(validations).reduce((promises, fieldName) => {
@@ -135,6 +141,7 @@ export default function PostCreateForm(props) {
               shortDescription,
               banner,
               content,
+              createdAt,
             };
             const result = onChange(modelFields);
             value = result?.title ?? value;
@@ -162,6 +169,7 @@ export default function PostCreateForm(props) {
               shortDescription: value,
               banner,
               content,
+              createdAt,
             };
             const result = onChange(modelFields);
             value = result?.shortDescription ?? value;
@@ -189,6 +197,7 @@ export default function PostCreateForm(props) {
               shortDescription,
               banner: value,
               content,
+              createdAt,
             };
             const result = onChange(modelFields);
             value = result?.banner ?? value;
@@ -216,6 +225,7 @@ export default function PostCreateForm(props) {
               shortDescription,
               banner,
               content: value,
+              createdAt,
             };
             const result = onChange(modelFields);
             value = result?.content ?? value;
@@ -229,6 +239,34 @@ export default function PostCreateForm(props) {
         errorMessage={errors.content?.errorMessage}
         hasError={errors.content?.hasError}
         {...getOverrideProps(overrides, "content")}
+      ></TextField>
+      <TextField
+        label="Created at"
+        isRequired={true}
+        isReadOnly={false}
+        value={createdAt}
+        onChange={(e) => {
+          let { value } = e.target;
+          if (onChange) {
+            const modelFields = {
+              title,
+              shortDescription,
+              banner,
+              content,
+              createdAt: value,
+            };
+            const result = onChange(modelFields);
+            value = result?.createdAt ?? value;
+          }
+          if (errors.createdAt?.hasError) {
+            runValidationTasks("createdAt", value);
+          }
+          setCreatedAt(value);
+        }}
+        onBlur={() => runValidationTasks("createdAt", createdAt)}
+        errorMessage={errors.createdAt?.errorMessage}
+        hasError={errors.createdAt?.hasError}
+        {...getOverrideProps(overrides, "createdAt")}
       ></TextField>
       <Flex
         justifyContent="space-between"
@@ -244,7 +282,7 @@ export default function PostCreateForm(props) {
           {...getOverrideProps(overrides, "ClearButton")}
         ></Button>
         <Flex
-          gap="15px"
+          gap={tokens.space.xl.value}
           {...getOverrideProps(overrides, "RightAlignCTASubFlex")}
         >
           <Button

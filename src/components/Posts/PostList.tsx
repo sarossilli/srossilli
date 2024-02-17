@@ -1,8 +1,9 @@
 import React from 'react';
 import { generateClient } from 'aws-amplify/api';
 import { useQuery } from '@tanstack/react-query';
-import { listPosts } from '../../graphql/queries';
+import { createdAt, listPosts } from '../../graphql/queries';
 import PostInfo from './Post/PostInfo';
+import { ModelSortDirection } from '../../API';
 
 interface PostListProps {
 }
@@ -20,6 +21,7 @@ function PostList(props?: PostListProps) {
         queryFn: async () => {
             const response = await client.graphql({
                 query: listPosts,
+                variables:{}
             });
 
             const allPosts =

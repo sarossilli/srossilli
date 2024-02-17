@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from "react-router-dom";
 import { generateClient } from 'aws-amplify/api'
 import { useQuery } from '@tanstack/react-query';
-import { getPost } from '../graphql/queries';
+import { getPost, listPosts } from '../graphql/queries';
 import MarkdownRenderer from "../components/MarkdownView/MarkdownRenderer"
 
 function PostDetails() {
@@ -19,10 +19,10 @@ function PostDetails() {
 
             const response = await client.graphql({
                 query: getPost,
-                variables: { id: id },
+                variables: { id: id},
             });
 
-            return response.data?.getPost;
+            return response.data?.getPost
         },
     });
     return isErrorQuery ? <h1>ERROR</h1> : (
