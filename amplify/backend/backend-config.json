@@ -24,24 +24,21 @@
     }
   },
   "auth": {
-    "srossilli": {
+    "srossilli65c8f08e65c8f08e": {
       "customAuth": false,
       "dependsOn": [],
       "frontendAuthConfig": {
-        "mfaConfiguration": "OFF",
+        "mfaConfiguration": "OPTIONAL",
         "mfaTypes": [
           "SMS"
         ],
         "passwordProtectionSettings": {
-          "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS",
-            "REQUIRES_SYMBOLS",
-            "REQUIRES_UPPERCASE"
-          ],
+          "passwordPolicyCharacters": [],
           "passwordPolicyMinLength": 8
         },
-        "signupAttributes": [],
+        "signupAttributes": [
+          "EMAIL"
+        ],
         "socialProviders": [],
         "usernameAttributes": [
           "EMAIL"
@@ -54,22 +51,44 @@
       "service": "Cognito"
     }
   },
-  "parameters": {
-    "AMPLIFY_storage_srossillic8d64944_bucketName": {
-      "usedBy": [
+  "custom": {
+    "cloudwatchrum": {
+      "dependsOn": [
         {
-          "category": "storage",
-          "resourceName": "srossillic8d64944"
-        }
-      ]
-    },
-    "AMPLIFY_storage_srossillic8d64944_region": {
-      "usedBy": [
+          "attributes": [
+            "IdentityPoolId",
+            "IdentityPoolName",
+            "UserPoolId",
+            "UserPoolArn",
+            "UserPoolName",
+            "AppClientIDWeb",
+            "AppClientID",
+            "CreatedSNSRole"
+          ],
+          "category": "auth",
+          "resourceName": "srossilli65c8f08e65c8f08e"
+        },
         {
-          "category": "storage",
-          "resourceName": "srossillic8d64944"
+          "attributes": [
+            "Name",
+            "Arn",
+            "Region",
+            "LambdaExecutionRole",
+            "LambdaExecutionRoleArn"
+          ],
+          "category": "function",
+          "resourceName": "cfncustomfn"
         }
-      ]
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "customCDK"
+    }
+  },
+  "function": {
+    "cfncustomfn": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
     }
   },
   "storage": {

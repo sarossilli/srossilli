@@ -10,6 +10,31 @@ import PostDetails from './pages/PostDetails';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { Amplify } from 'aws-amplify';
 import config from './aws-exports'
+import { AwsRum, AwsRumConfig } from 'aws-rum-web';
+
+try {
+  const config: AwsRumConfig = {
+    sessionSampleRate: 1,
+    identityPoolId: "us-east-1:2404d7ae-0cfb-4dbd-a1ff-e709e5a1966d",
+    endpoint: "https://dataplane.rum.us-east-1.amazonaws.com",
+    telemetries: ["performance","errors","http"],
+    allowCookies: true,
+    enableXRay: false
+  };
+
+  const APPLICATION_ID: string = '3f87f7da-cf72-40ec-8679-4ab866e26a6b';
+  const APPLICATION_VERSION: string = '1.0.0';
+  const APPLICATION_REGION: string = 'us-east-1';
+
+  const awsRum: AwsRum = new AwsRum(
+    APPLICATION_ID,
+    APPLICATION_VERSION,
+    APPLICATION_REGION,
+    config
+  );
+} catch (error) {
+  // Ignore errors thrown during CloudWatch RUM web client initialization
+}
 
 Amplify.configure(config)
 
@@ -41,7 +66,3 @@ root.render(
   </React.StrictMode>
 );
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

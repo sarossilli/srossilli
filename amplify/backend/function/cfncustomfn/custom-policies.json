@@ -1,0 +1,10 @@
+[
+  {
+    "Action": [
+      "rum:GetAppMonitor"
+    ],
+    "Resource": [
+      { "Fn::Sub": "arn:aws:rum:us-east-1:473343022237:appmonitor/app-monitor-srossilli-${amplify-env}" }
+    ]
+  }
+]
